@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carshub-backend
+spec:
+  selector:
+    matchLabels:
+      app: carshub-backend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: carshub-backend
+    spec:
+      containers:
+        - name: carshub-backend
+          image: us-central1-docker.pkg.dev/our-mediator-443812-i8/carshub-backend/carshub-backend:latest
+          env:
+            - name: USERNAME
+              valueFrom:
+                configMapKeyRef:
+                  name: carshub-config
+                  key: username
+            - name: PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: carshub-secret
+                  key: password
+          ports:
+            - containerPort: 3001

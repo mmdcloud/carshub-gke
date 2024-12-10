@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: carshub-frontend
+spec:
+  selector:
+    matchLabels:
+      app: carshub-frontend
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: carshub-frontend
+    spec:
+      containers:
+        - name: carshub-frontend
+          image: us-central1-docker.pkg.dev/our-mediator-443812-i8/carshub-frontend/carshub-frontend:latest
+          ports:
+            - containerPort: 3000

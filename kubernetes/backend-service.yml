@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: carshub-backend-service
+spec:
+  type: ClusterIP
+  selector:
+    app: carshub-backend
+  ports:
+    - protocol: TCP
+      port: 3001
+      targetPort: 3001
