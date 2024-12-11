@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: carshub-frontend-service
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: carshub-frontend
   ports:
